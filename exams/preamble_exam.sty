@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
 %%%%%%%%%%% Margins
-\usepackage[paper=a4paper, left=10mm, right=10mm, top=10mm, bottom=10mm, bindingoffset=0mm, footskip=0mm]{geometry}
+\usepackage[paper=a4paper, left=10mm, right=10mm, top=15mm, bottom=15mm, bindingoffset=0mm, footskip=0mm]{geometry}
 
 %%%%%%%%%%% Fonts
 \usepackage[french]{babel}
@@ -126,7 +126,6 @@
 %%%%%%%%%%% Break box
 \newcommand{\partbreak}[2]{
     \begin{center}
-    \vspace{3mm}
     \begin{tcolorbox}[%
       colframe=gray!70!black, 
       colback=gray!20,
@@ -141,6 +140,7 @@
       \centering \normalsize \bfseries #1 \small{ (#2 pts)}
     \end{tcolorbox}
     \end{center}
+    \vspace{-5mm}
 }
 
 %%%%%%%%%%%%% Header box
@@ -172,7 +172,7 @@
           \vspace{0cm}\hspace{3cm} Semestre #3
         \end{minipage}
     \end{examheaderbox}
-        % \vspace{3mm}
+        \vspace{5mm}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% Misc

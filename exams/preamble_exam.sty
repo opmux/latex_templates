@@ -1,0 +1,183 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Packages
+%%%%%%%%%%% Margins
+\usepackage[paper=a4paper, left=10mm, right=10mm, top=10mm, bottom=10mm, bindingoffset=0mm, footskip=0mm]{geometry}
+
+%%%%%%%%%%% Fonts
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+% \usepackage{lmodern}
+% \usepackage{scrextend}
+% \changefontsizes[20pt]{17pt}
+% \usepackage{enumitem}
+
+%%%%%%%%%%% Math
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{fourier} % \widehat \widearc
+\usepackage[e]{esvect}
+% \usepackage{physics}
+% \usepackage{units}
+% \usepackage{bm}
+% \usepackage{mathtools}
+% \usepackage{cancel}
+% \usepackage{amsthm}
+
+%%%%%%%%%%% Graphiques
+% \usepackage{adjustbox}
+\usepackage{changepage}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+% \usepackage[format=plain,
+%            labelfont=it,
+%            textfont=it]{caption}	
+\usepackage{wrapfig}
+\usepackage{float} 
+% % \usepackage{xcolor}
+% \usepackage{color}
+% \usepackage[svgnames]{xcolor}
+\usepackage[most]{tcolorbox}
+% \usepackage{pgfplots}
+% \usepackage{tikz}
+% \usepackage{tikz-3dplot}
+% \usepackage{tkz-tab}
+% \usepackage{tkz-fct}
+
+%%%%%%%%%%%  tables et tableaux
+\usepackage{tabu} 
+\usepackage{multirow}
+\usepackage{footnote}
+\usepackage{tabularx}
+
+%%%%%%%%%%% Other packages
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{nopageno}% disable page numbering
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Config
+%%%%%%%%%%% Set question Points format
+\newcommand{\hlf}{$0.5$}
+\newcommand{\qrt}{$0.25$}
+\newcommand{\tqrt}{$0.75$}
+
+\makeatletter
+\renewcommand\points{%
+  \begingroup
+    \let\half=\relax
+    \edef\pt@string{\@points}%
+    \ifthenelse{\equal{\pt@string}{1} \OR \equal{\pt@string}{\hlf} \OR \equal{\pt@string}{\qrt} \OR \equal{\pt@string}{\tqrt} }
+    {\point@sing}{\point@plur}
+  \endgroup
+}
+\makeatother
+
+\pointpoints{pt}{pts}
+\pointsdroppedatright %show only \droppoints
+% \pointsinleftmargin
+% \pointsinrightmargin
+\marginpointname{ \points}
+\setlength{\rightpointsmargin}{25mm}
+% \setlength{\marginpointssep}{5pt}
+% \pointformat{\bfseries\boldmath[\themarginpoints]}
+\pointformat{[\themarginpoints]}
+% \bracketedpoints
+% \pointsdroppedatright
+
+%%%%%%%%%% item label
+\AtBeginDocument{\def\labelitemi{$\bullet$}}
+\AtBeginDocument{\def\labelitemii{$\circ$}}
+\AtBeginDocument{\def\labelitemiii{$-$}}
+
+%%%%%%%%%% enumerate label
+\AtBeginDocument{\def\labelenumi{$\arabic{enumi})$}}
+\AtBeginDocument{\def\labelenumii{$\alph{enumii})$}}
+\AtBeginDocument{\def\labelenumiii{$\roman{enumiii})$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Exam boxes
+%%%%%%%%%%%% Exercice box
+\newcounter{exercisecounter}
+\setcounter{exercisecounter}{1}
+\newtcolorbox{exercicebox}[1]{
+    enhanced,
+    breakable,
+    sharp corners,
+    colback=white,
+    colframe=gray!70!black,
+    coltitle=black,
+    fonttitle=\bfseries,
+    attach boxed title to top left={yshift=-2mm, xshift=5mm},
+    boxed title style={
+      colback=gray!20,
+      outer arc=0pt,
+      arc=0pt,
+      boxrule=0pt,
+      top=2pt,
+      bottom=2pt,
+      left=2pt,
+      right=2pt,
+    },
+    title={\large Exercice \arabic{exercisecounter} : \small(#1 pts)},
+    arc=0pt,
+    after upper={
+        \stepcounter{exercisecounter}
+    }
+}
+
+%%%%%%%%%%% Break box
+\newcommand{\partbreak}[2]{
+    \begin{center}
+    \vspace{3mm}
+    \begin{tcolorbox}[%
+      colframe=gray!70!black, 
+      colback=gray!20,
+      width=0.2\textwidth,
+      boxrule=0pt,
+      arc=0pt,
+      top=2pt,
+      bottom=2pt,
+      left=2pt,
+      right=2pt,
+    ]
+      \centering \normalsize \bfseries #1 \small{ (#2 pts)}
+    \end{tcolorbox}
+    \end{center}
+}
+
+%%%%%%%%%%%%% Header box
+\newtcolorbox{examheaderbox}{
+  colback=gray!10,
+  colframe=gray!70!black,
+  fonttitle=\bfseries,
+  coltitle=black,
+  enhanced,
+  sharp corners,
+}
+ 
+\newcommand{\examheader}[4]{%
+    \begin{examheaderbox}
+        \begin{minipage}[t]{0.3\textwidth}
+         % \textsc{#1} \hfill \\
+         #1 \hfill \\
+         #2 \hfill
+        \end{minipage}
+        \begin{minipage}[t]{0.4\textwidth}
+            \centering
+            % \vfill
+            \textbf{Controle N$^\circ$ 0#4 Physique-Chimie}\\
+            Varient (A)
+            % \vfill
+        \end{minipage}
+        \begin{minipage}[t]{0.3\textwidth}
+          \hspace{3cm} 2023/2024 \\
+          \vspace{0cm}\hspace{3cm} Semestre #3
+        \end{minipage}
+    \end{examheaderbox}
+        % \vspace{3mm}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Misc
+% reduce space after figure
+\newcommand{\squeezeup}{\vspace{-0.5cm}}
+
+\newcommand\reallywideparen[1]{%
+%

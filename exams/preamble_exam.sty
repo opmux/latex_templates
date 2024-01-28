@@ -84,6 +84,9 @@
 % \pointsdroppedatright
 
 %%%%%%%%%% Roman questions section
+\renewcommand{\subsubpartshook}{%
+  \setlength{\leftmargin}{0pt}%
+  }
 \NewEnviron{Rquestions}{
   \begin{questions}
   \begin{subsubparts}
@@ -96,12 +99,12 @@
 
 %%%%%%%%%% question part subpart label
 \renewcommand{\thequestion}{\arabic{question}}
-\renewcommand{\thepartno}{\arabic{partno}}
-\renewcommand{\thesubpart}{\alph{subpart}}
+\renewcommand{\thepartno}{\alph{partno}}
+\renewcommand{\thesubpart}{\roman{subpart}}
 
 \renewcommand{\questionlabel}{\thequestion)}
-\renewcommand{\partlabel}{\thepartno)}
-\renewcommand{\subpartlabel}{\thesubpart-}
+\renewcommand{\partlabel}{\thepartno-}
+\renewcommand{\subpartlabel}{\thesubpart.}
 
 \renewcommand{\choicelabel}{\thechoice.}
 

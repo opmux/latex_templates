@@ -9,7 +9,7 @@
 % \usepackage{lmodern}
 % \usepackage{scrextend}
 % \changefontsizes[20pt]{17pt}
-% \usepackage{enumitem}
+\usepackage{enumitem}
 
 %%%%%%%%%%% Math
 \usepackage{amsmath,amsfonts,amssymb}
@@ -83,6 +83,28 @@
 % \bracketedpoints
 % \pointsdroppedatright
 
+%%%%%%%%%% Roman questions section
+\NewEnviron{Rquestions}{
+  \begin{questions}
+  \begin{subsubparts}
+    \newcommand{\Rquestion}{\subsubpart}
+    \renewcommand{\thesubsubpart}{\Roman{subsubpart}}   
+     \BODY
+  \end{subsubparts}
+  \end{questions}
+}
+
+%%%%%%%%%% question part subpart label
+\renewcommand{\thequestion}{\arabic{question}}
+\renewcommand{\thepartno}{\arabic{partno}}
+\renewcommand{\thesubpart}{\alph{subpart}}
+
+\renewcommand{\questionlabel}{\thequestion)}
+\renewcommand{\partlabel}{\thepartno)}
+\renewcommand{\subpartlabel}{\thesubpart-}
+
+\renewcommand{\choicelabel}{\thechoice.}
+
 %%%%%%%%%% item label
 \AtBeginDocument{\def\labelitemi{$\bullet$}}
 \AtBeginDocument{\def\labelitemii{$\circ$}}
@@ -153,7 +175,7 @@
   sharp corners,
 }
  
-\newcommand{\examheader}[4]{%
+\newcommand{\examheader}[5]{%
     \begin{examheaderbox}
         \begin{minipage}[t]{0.3\textwidth}
          % \textsc{#1} \hfill \\
@@ -164,7 +186,7 @@
             \centering
             % \vfill
             \textbf{Controle N$^\circ$ 0#4 Physique-Chimie}\\
-            Varient (A)
+            Varient (#5)
             % \vfill
         \end{minipage}
         \begin{minipage}[t]{0.3\textwidth}
